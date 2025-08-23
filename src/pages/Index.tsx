@@ -6,18 +6,22 @@ import vetPet from "@/assets/vet-pet.png";
 import trainingPet from "@/assets/training-pet.png";
 import adoptionPet from "@/assets/adoption-pet.png";
 import sittingPet from "@/assets/sitting-pet.png";
+import homePet from "@/assets/home-pet.png";
+import matingPet from "@/assets/mating-pet.png";
+import trackingPet from "@/assets/tracking-pet.png";
+import cabPet from "@/assets/cab-pet.png";
 
 const Index = () => {
   const services = [
-    { title: "HOME", bgColor: "bg-furry-cyan", textColor: "text-white" },
+    { title: "HOME", bgColor: "bg-furry-cyan", textColor: "text-white", image: homePet },
     { title: "GROOMING", bgColor: "bg-furry-orange", textColor: "text-white", image: groomingPet },
     { title: "VET ON CALL", bgColor: "bg-furry-lime", textColor: "text-white", image: vetPet },
-    { title: "MATING", bgColor: "bg-furry-lime", textColor: "text-white" },
-    { title: "TRACKING", bgColor: "bg-furry-red", textColor: "text-white" },
+    { title: "MATING", bgColor: "bg-furry-lime", textColor: "text-white", image: matingPet },
+    { title: "TRACKING", bgColor: "bg-furry-red", textColor: "text-white", image: trackingPet },
     { title: "PET TRAINING", bgColor: "bg-furry-cyan", textColor: "text-white", image: trainingPet },
     { title: "PET ADOPTION", bgColor: "bg-furry-orange", textColor: "text-white", image: adoptionPet },
     { title: "PET SITTING", bgColor: "bg-furry-lime", textColor: "text-white", image: sittingPet },
-    { title: "CAB A PET", bgColor: "bg-furry-red", textColor: "text-white" }
+    { title: "CAB A PET", bgColor: "bg-furry-red", textColor: "text-white", image: cabPet }
   ];
 
   return (
