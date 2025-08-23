@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 import { ServiceCard } from "@/components/ServiceCard";
 import winterBg from "@/assets/winter-background.jpg";
 import groomingPet from "@/assets/grooming-pet.png";
@@ -106,6 +107,8 @@ const Index = () => {
             </div>
           </div>
         </main>
+        
+        <Footer />
       </div>
     </div>
   );
