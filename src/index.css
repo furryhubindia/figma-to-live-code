@@ -17,8 +17,8 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 100%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -36,7 +36,19 @@ All colors MUST be HSL.
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
-    --radius: 0.5rem;
+    /* FurryHub Brand Colors */
+    --furry-cyan: 185 100% 45%;
+    --furry-orange: 25 100% 50%;
+    --furry-lime: 80 70% 55%;
+    --furry-red: 0 85% 55%;
+    --furry-purple: 263 70% 50%;
+
+    /* Winter Background */
+    --winter-bg: 200 30% 85%;
+    --winter-overlay: 200 30% 90%;
+    --snow-white: 0 0% 98%;
+
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 98%;
 

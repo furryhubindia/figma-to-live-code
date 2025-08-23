@@ -1,11 +1,107 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Header } from "@/components/Header";
+import { ServiceCard } from "@/components/ServiceCard";
+import winterBg from "@/assets/winter-background.jpg";
+import groomingPet from "@/assets/grooming-pet.png";
+import vetPet from "@/assets/vet-pet.png";
+import trainingPet from "@/assets/training-pet.png";
+import adoptionPet from "@/assets/adoption-pet.png";
+import sittingPet from "@/assets/sitting-pet.png";
 
 const Index = () => {
+  const services = [
+    { title: "HOME", bgColor: "bg-furry-cyan", textColor: "text-white" },
+    { title: "GROOMING", bgColor: "bg-furry-orange", textColor: "text-white", image: groomingPet },
+    { title: "VET ON CALL", bgColor: "bg-furry-lime", textColor: "text-white", image: vetPet },
+    { title: "MATING", bgColor: "bg-furry-lime", textColor: "text-white" },
+    { title: "TRACKING", bgColor: "bg-furry-red", textColor: "text-white" },
+    { title: "PET TRAINING", bgColor: "bg-furry-cyan", textColor: "text-white", image: trainingPet },
+    { title: "PET ADOPTION", bgColor: "bg-furry-orange", textColor: "text-white", image: adoptionPet },
+    { title: "PET SITTING", bgColor: "bg-furry-lime", textColor: "text-white", image: sittingPet },
+    { title: "CAB A PET", bgColor: "bg-furry-red", textColor: "text-white" }
+  ];
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-winter-bg relative overflow-hidden">
+      {/* Winter Background */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-30"
+        style={{ backgroundImage: `url(${winterBg})` }}
+      />
+      
+      {/* Floating Snowflakes Animation */}
+      <div className="absolute inset-0 pointer-events-none">
+        {[...Array(20)].map((_, i) => (
+          <div
+            key={i}
+            className="absolute w-2 h-2 bg-white rounded-full opacity-70 animate-bounce"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 3}s`,
+              animationDuration: `${3 + Math.random() * 2}s`
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10">
+        <Header />
+        
+        <main className="container mx-auto px-4 py-8 md:py-12">
+          <div className="max-w-6xl mx-auto">
+            {/* Hero Section with Letter Styling */}
+            <div className="text-center mb-12">
+              <div className="flex justify-center items-center space-x-2 mb-8">
+                {["F", "U", "R", "R", "Y", "H", "U", "B"].map((letter, index) => (
+                  <div
+                    key={index}
+                    className="w-12 h-16 md:w-16 md:h-20 bg-white rounded-lg shadow-lg flex items-center justify-center text-2xl md:text-3xl font-bold text-gray-800 transform hover:scale-110 transition-transform duration-200"
+                    style={{
+                      background: index % 2 === 0 
+                        ? "linear-gradient(135deg, #00bcd4, #00acc1)" 
+                        : "linear-gradient(135deg, #ff9800, #ff8f00)"
+                    }}
+                  >
+                    <span className="text-white drop-shadow-md">{letter}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Services Grid */}
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
+              {services.map((service, index) => (
+                <ServiceCard
+                  key={index}
+                  title={service.title}
+                  bgColor={service.bgColor}
+                  textColor={service.textColor}
+                  image={service.image}
+                  onClick={() => console.log(`Clicked ${service.title}`)}
+                />
+              ))}
+            </div>
+
+            {/* Decorative Pet Characters */}
+            <div className="mt-16 flex justify-center items-center space-x-8">
+              <div className="hidden md:flex items-center space-x-6">
+                <div className="w-20 h-20 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-2xl">🐕</span>
+                </div>
+                <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-xl">🐱</span>
+                </div>
+                <div className="w-18 h-18 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-2xl">🐰</span>
+                </div>
+                <div className="w-16 h-16 bg-white/80 rounded-full flex items-center justify-center shadow-lg">
+                  <span className="text-xl">🐦</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
       </div>
     </div>
   );

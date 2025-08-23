@@ -52,6 +52,15 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// FurryHub Brand Colors
+				'furry-cyan': 'hsl(var(--furry-cyan))',
+				'furry-orange': 'hsl(var(--furry-orange))',
+				'furry-lime': 'hsl(var(--furry-lime))',
+				'furry-red': 'hsl(var(--furry-red))',
+				'furry-purple': 'hsl(var(--furry-purple))',
+				'winter-bg': 'hsl(var(--winter-bg))',
+				'winter-overlay': 'hsl(var(--winter-overlay))',
+				'snow-white': 'hsl(var(--snow-white))',
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
