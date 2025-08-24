@@ -24,7 +24,7 @@ export const ServiceCard = ({ title, bgColor, textColor = "text-white", image, o
           <img 
             src={image} 
             alt={title}
-            className="w-full h-full object-cover opacity-80"
+            className="w-full h-full object-contain opacity-80 p-4"
           />
         </div>
       )}
