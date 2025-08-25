@@ -1,7 +1,9 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ServiceCard } from "@/components/ServiceCard";
+import { ComingSoonModal } from "@/components/ComingSoonModal";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 import winterBg from "@/assets/winter-background.jpg";
 import groomingPet from "@/assets/grooming-pet.png";
 import vetPet from "@/assets/vet-pet.png";
@@ -15,6 +17,8 @@ import cabPet from "@/assets/cab-pet.png";
 
 const Index = () => {
   const navigate = useNavigate();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
   const services = [
     { title: "HOME", bgColor: "bg-furry-cyan", textColor: "text-white", image: homePet },
     { title: "GROOMING", bgColor: "bg-furry-orange", textColor: "text-white", image: groomingPet },
@@ -89,7 +93,8 @@ const Index = () => {
                     if (service.title === "GROOMING") {
                       navigate("/grooming");
                     } else {
-                      console.log(`Clicked ${service.title}`);
+                      setSelectedService(service.title);
+                      setIsModalOpen(true);
                     }
                   }}
                 />
@@ -118,6 +123,12 @@ const Index = () => {
         
         <Footer />
       </div>
+      
+      <ComingSoonModal 
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        serviceName={selectedService}
+      />
     </div>
   );
 };
