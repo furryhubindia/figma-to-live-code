@@ -112,6 +112,8 @@ const Index = () => {
                   onClick={() => {
                     if (service.title === "GROOMING") {
                       navigate("/grooming");
+                    } else if (service.title === "PET TRAINING") {
+                      navigate("/training");
                     } else {
                       setSelectedService(service.title);
                       setIsModalOpen(true);
