@@ -1,12 +1,18 @@
 import { User, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header className="w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 px-4 py-3 md:px-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <div className="flex items-center space-x-3">
+        <div 
+          className="flex items-center space-x-3 cursor-pointer hover:opacity-80 transition-opacity"
+          onClick={() => navigate("/")}
+        >
           <img 
             src="/lovable-uploads/1e65733e-72da-4657-999d-da4b9d32af9c.png" 
             alt="FurryHub Logo" 
