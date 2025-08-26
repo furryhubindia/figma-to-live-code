@@ -185,16 +185,19 @@ const Training = () => {
       {/* FurryHub's Promise */}
       <div className="py-12 px-4 bg-gradient-to-br from-orange-100 to-yellow-100">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 items-center">
-          <div className="relative">
-            <div className="text-8xl">🧑‍🏫</div>
-            <div className="absolute top-0 right-0 bg-orange-200 rounded-full w-32 h-32 opacity-50"></div>
-          </div>
-          <div>
+          <div className="flex-1">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">FURRYHUB'S PROMISE</h2>
             <h3 className="text-xl font-semibold text-gray-700 mb-4">Building Bonds, Creating Happy Pets</h3>
             <p className="text-gray-600 leading-relaxed">
               At FurryHub, we are dedicated to strengthening the bond between pets and their owners by connecting you with professional trainers through our innovative platform. Our mission is to bridge the gap between pet parents and trusted experts, ensuring a seamless, stress-free training experience. Whether you're working with a playful puppy, a curious parrot, or a majestic horse, FurryHub offers a convenient and reliable way to find and book professional trainers tailored to your pet's unique needs.
             </p>
+          </div>
+          <div className="w-64 h-64 flex items-center justify-center">
+            <img 
+              src="/lovable-uploads/ece8d07b-6dd9-4b6e-8350-e731e3798881.png" 
+              alt="Man with dog training" 
+              className="w-full h-full object-contain"
+            />
           </div>
         </div>
       </div>
@@ -203,38 +206,35 @@ const Training = () => {
       <div className="py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">TRAINING PACKAGES:</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-6">
             {trainingPackages.map((pkg, index) => (
-              <Card key={index} className={`${pkg.bgColor} text-white p-6 rounded-2xl border-0 shadow-lg`}>
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex items-center space-x-3">
-                    <div className="text-3xl">{pkg.icon}</div>
-                    <h3 className="text-xl font-bold">{pkg.title}</h3>
+              <div key={index} className="bg-white rounded-3xl p-6 shadow-lg border border-gray-200">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center">
+                      <div className="text-2xl">{pkg.icon}</div>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-800">{pkg.title}</h3>
+                  </div>
+                  <div className="text-right">
+                    <div className="text-sm text-gray-600 mb-2">Services Included:</div>
+                    <ul className="text-xs text-gray-600 space-y-1">
+                      {pkg.includes.map((item, idx) => (
+                        <li key={idx}>• {item}</li>
+                      ))}
+                    </ul>
+                    <div className="text-xs text-gray-600 mt-2 mb-3">
+                      <span className="font-semibold">Recommended For:</span> {pkg.recommended}
+                    </div>
+                    <Button 
+                      onClick={() => addToCart(pkg.title)}
+                      className="bg-red-400 text-white font-semibold px-4 py-2 rounded-full hover:bg-red-500"
+                    >
+                      Add to Cart
+                    </Button>
                   </div>
                 </div>
-                
-                <div className="mb-4">
-                  <p className="font-semibold mb-2">Includes:</p>
-                  <ul className="space-y-1">
-                    {pkg.includes.map((item, idx) => (
-                      <li key={idx} className="text-sm">• {item}</li>
-                    ))}
-                  </ul>
-                </div>
-                
-                <div className="mb-4">
-                  <p className="text-sm">
-                    <span className="font-semibold">Recommended For:</span> {pkg.recommended}
-                  </p>
-                </div>
-                
-                <Button 
-                  onClick={() => addToCart(pkg.title)}
-                  className="w-full bg-blue-500 hover:bg-blue-600 text-white"
-                >
-                  Add to Cart
-                </Button>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
