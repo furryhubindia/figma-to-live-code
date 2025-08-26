@@ -63,11 +63,11 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             {/* Hero Section with Letter Styling */}
             <div className="text-center mb-12">
-              <div className="flex justify-center items-center space-x-2 mb-8">
+              <div className="relative flex justify-center items-center space-x-2 mb-8">
                 {["F", "U", "R", "R", "Y", "H", "U", "B"].map((letter, index) => (
                   <div
                     key={index}
-                    className="w-12 h-16 md:w-16 md:h-20 bg-white rounded-lg shadow-lg flex items-center justify-center text-2xl md:text-3xl font-bold text-gray-800 transform hover:scale-110 transition-transform duration-200"
+                    className="w-12 h-16 md:w-16 md:h-20 bg-white rounded-lg shadow-lg flex items-center justify-center text-2xl md:text-3xl font-bold text-gray-800 transform hover:scale-110 transition-transform duration-200 relative"
                     style={{
                       background: index % 2 === 0 
                         ? "linear-gradient(135deg, #00bcd4, #00acc1)" 
@@ -77,6 +77,26 @@ const Index = () => {
                     <span className="text-white drop-shadow-md">{letter}</span>
                   </div>
                 ))}
+                
+                {/* Animated Pet Animals */}
+                <div className="absolute inset-0 pointer-events-none">
+                  {/* Dog moving across letters */}
+                  <div className="absolute top-[-20px] left-0 text-2xl animate-[moveAcrossLetters_8s_ease-in-out_infinite]">
+                    🐕
+                  </div>
+                  {/* Cat moving in reverse */}
+                  <div className="absolute bottom-[-20px] right-0 text-2xl animate-[moveAcrossLettersReverse_6s_ease-in-out_infinite_2s]">
+                    🐱
+                  </div>
+                  {/* Rabbit jumping */}
+                  <div className="absolute top-[-25px] left-1/4 text-xl animate-[jumpBetweenLetters_5s_ease-in-out_infinite_1s]">
+                    🐰
+                  </div>
+                  {/* Bird flying */}
+                  <div className="absolute top-[-30px] right-1/4 text-lg animate-[flyAcrossLetters_7s_ease-in-out_infinite_3s]">
+                    🐦
+                  </div>
+                </div>
               </div>
             </div>
 
