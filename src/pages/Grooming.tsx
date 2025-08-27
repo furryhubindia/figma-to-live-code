@@ -41,7 +41,7 @@ export const Grooming = () => {
                 </Button>
               </div>
             </div>
-            <div className="w-48 h-32 flex-shrink-0">
+            <div className="w-64 h-48 flex-shrink-0">
               <img src="/lovable-uploads/285eb637-2862-45cc-b3f3-34122144835e.png" alt="Two groomed poodles" className="w-full h-full object-contain" />
             </div>
           </div>
