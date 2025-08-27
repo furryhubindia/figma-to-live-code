@@ -12,7 +12,7 @@ export const Grooming = () => {
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center gap-4">
             <button onClick={() => navigate("/")} className="p-2">
-              <Home className="w-6 h-6 text-gray-600" />
+              <img src="/lovable-uploads/650b4201-0e0c-4044-b7c0-1e07ec1a5454.png" alt="FurryHub Logo" className="w-8 h-8 object-contain" />
             </button>
             <h1 className="text-2xl font-black text-gray-800">FURRY GROOMING</h1>
           </div>
