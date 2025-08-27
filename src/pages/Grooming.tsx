@@ -25,20 +25,25 @@ export const Grooming = () => {
       <div className="max-w-4xl mx-auto px-4">
         {/* Hero Section */}
         <div className="relative bg-gradient-to-r from-orange-200 to-orange-300 rounded-3xl p-8 my-6 overflow-hidden">
-          <div className="relative z-10">
-            <h2 className="text-3xl font-black text-gray-800 mb-2">ALL PETS, ALL CARE,</h2>
-            <h2 className="text-3xl font-black text-gray-800 mb-6">ALL AT YOUR DOORSTEP!</h2>
-            <div className="flex gap-3">
-              <Button className="bg-green-400 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-green-500">
-                Explore Packages
-              </Button>
-              <Button className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300">
-                Book now
-              </Button>
+          <div className="flex items-center gap-8">
+            <div className="flex-1 relative z-10">
+              <h2 className="text-3xl font-black text-gray-800 mb-2">ALL PETS, ALL CARE,</h2>
+              <h2 className="text-3xl font-black text-gray-800 mb-6">ALL AT YOUR DOORSTEP!</h2>
+              <div className="flex gap-3">
+                <Button 
+                  onClick={() => document.getElementById('grooming-packages')?.scrollIntoView({ behavior: 'smooth' })}
+                  className="bg-green-400 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-green-500"
+                >
+                  Explore Packages
+                </Button>
+                <Button className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300">
+                  Book now
+                </Button>
+              </div>
             </div>
-          </div>
-          <div className="absolute right-4 top-4 w-48 h-32">
-            <img src="/src/assets/grooming-pet.png" alt="Pets" className="w-full h-full object-contain" />
+            <div className="w-48 h-32 flex-shrink-0">
+              <img src="/lovable-uploads/285eb637-2862-45cc-b3f3-34122144835e.png" alt="Two groomed poodles" className="w-full h-full object-contain" />
+            </div>
           </div>
         </div>
 
@@ -109,7 +114,7 @@ export const Grooming = () => {
         </div>
 
         {/* Grooming Packages */}
-        <div className="my-12">
+        <div className="my-12" id="grooming-packages">
           <div className="relative">
             <div className="absolute -left-4 -top-4 w-32 h-32 bg-orange-200 rounded-full -z-10"></div>
             <h3 className="text-2xl font-black text-gray-800 mb-8">GROOMING PACKAGES:</h3>
@@ -135,7 +140,7 @@ export const Grooming = () => {
                     <li>• Paw Moisturising & Cleaning</li>
                   </ul>
                   <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
-                    Book now
+                    Add to Cart
                   </Button>
                 </div>
               </div>
@@ -159,7 +164,7 @@ export const Grooming = () => {
                     <li>• Deshedding & Combing</li>
                   </ul>
                   <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
-                    Book now
+                    Add to Cart
                   </Button>
                 </div>
               </div>
@@ -183,7 +188,7 @@ export const Grooming = () => {
                     <li>• Mite Treatment</li>
                   </ul>
                   <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
-                    Book now
+                    Add to Cart
                   </Button>
                 </div>
               </div>
@@ -207,7 +212,7 @@ export const Grooming = () => {
                     <li>• Deworming & Mite Treatment</li>
                   </ul>
                   <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
-                    Book now
+                    Add to Cart
                   </Button>
                 </div>
               </div>
@@ -231,7 +236,7 @@ export const Grooming = () => {
                     <li>• Health Checkup</li>
                   </ul>
                   <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
-                    Book now
+                    Add to Cart
                   </Button>
                 </div>
               </div>
@@ -255,7 +260,7 @@ export const Grooming = () => {
                     <li>• Skin Moisturising</li>
                   </ul>
                   <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
-                    Book now
+                    Add to Cart
                   </Button>
                 </div>
               </div>
@@ -281,7 +286,7 @@ export const Grooming = () => {
                     <li>• Health checkups</li>
                   </ul>
                   <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
-                    Book now
+                    Add to Cart
                   </Button>
                 </div>
               </div>
