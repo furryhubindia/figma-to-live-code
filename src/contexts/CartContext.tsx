@@ -1,12 +1,14 @@
 import React, { createContext, useContext, useState, ReactNode } from 'react';
 
-interface CartItem {
+export interface CartItem {
   id: string;
   name: string;
-  type: 'grooming' | 'training';
+  price: string;
+  type: 'grooming' | 'training' | 'pet-sitting';
 }
 
 interface CartContextType {
+  cart: CartItem[];
   cartItems: CartItem[];
   addToCart: (item: CartItem) => void;
   removeFromCart: (id: string) => void;
@@ -53,6 +55,7 @@ export const CartProvider: React.FC<CartProviderProps> = ({ children }) => {
   const cartCount = cartItems.length;
 
   const value: CartContextType = {
+    cart: cartItems,
     cartItems,
     addToCart,
     removeFromCart,

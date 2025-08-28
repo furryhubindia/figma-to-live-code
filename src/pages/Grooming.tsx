@@ -10,10 +10,21 @@ export const Grooming = () => {
   const { addToCart, cartCount } = useCart();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
+  const packagePrices: { [key: string]: string } = {
+    "Wag & Wash (Dogs)": "₹899",
+    "Purr-fect Care (Cats)": "₹699",
+    "Chirpy Care (Birds)": "₹399",
+    "Hoppy Groom (Rabbits)": "₹499",
+    "Shell Shine (Turtles)": "₹299",
+    "Hoof & Mane Spa (Horses)": "₹1999",
+    "Customized Grooming (Exotic Pets)": "₹599"
+  };
+
   const handleAddToCart = (packageName: string) => {
     addToCart({
       id: `grooming-${packageName.toLowerCase().replace(/\s+/g, '-')}`,
       name: packageName,
+      price: packagePrices[packageName] || "₹499",
       type: 'grooming'
     });
   };
