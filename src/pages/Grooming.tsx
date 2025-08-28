@@ -1,9 +1,22 @@
-import { Home } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/contexts/CartContext";
+import { BookingModal } from "@/components/BookingModal";
+import { useState } from "react";
 
 export const Grooming = () => {
   const navigate = useNavigate();
+  const { addToCart, cartCount } = useCart();
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+
+  const handleAddToCart = (packageName: string) => {
+    addToCart({
+      id: `grooming-${packageName.toLowerCase().replace(/\s+/g, '-')}`,
+      name: packageName,
+      type: 'grooming'
+    });
+  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -16,9 +29,25 @@ export const Grooming = () => {
             </button>
             <h1 className="text-2xl font-black text-gray-800">FURRY GROOMING</h1>
           </div>
-          <Button className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300">
-            Book now
-          </Button>
+          <div className="flex items-center gap-3">
+            <button 
+              onClick={() => setIsBookingModalOpen(true)}
+              className="relative p-2"
+            >
+              <ShoppingCart className="w-6 h-6 text-gray-800" />
+              {cartCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </button>
+            <Button 
+              onClick={() => setIsBookingModalOpen(true)}
+              className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300"
+            >
+              Book now
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -36,7 +65,10 @@ export const Grooming = () => {
                 >
                   Explore Packages
                 </Button>
-                <Button className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300">
+                <Button 
+                  onClick={() => setIsBookingModalOpen(true)}
+                  className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300"
+                >
                   Book now
                 </Button>
               </div>
@@ -139,7 +171,10 @@ export const Grooming = () => {
                     <li>• Ear & Eye Cleaning</li>
                     <li>• Paw Moisturising & Cleaning</li>
                   </ul>
-                  <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
+                  <Button 
+                    onClick={() => handleAddToCart("Wag & Wash (Dogs)")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -163,7 +198,10 @@ export const Grooming = () => {
                     <li>• Ear & Eye Cleaning</li>
                     <li>• Deshedding & Combing</li>
                   </ul>
-                  <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
+                  <Button 
+                    onClick={() => handleAddToCart("Purr-fect Care (Cats)")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -187,7 +225,10 @@ export const Grooming = () => {
                     <li>• Beak Buffing</li>
                     <li>• Mite Treatment</li>
                   </ul>
-                  <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
+                  <Button 
+                    onClick={() => handleAddToCart("Chirpy Care (Birds)")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -211,7 +252,10 @@ export const Grooming = () => {
                     <li>• Ear Cleaning</li>
                     <li>• Deworming & Mite Treatment</li>
                   </ul>
-                  <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
+                  <Button 
+                    onClick={() => handleAddToCart("Hoppy Groom (Rabbits)")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -235,7 +279,10 @@ export const Grooming = () => {
                     <li>• Algae Removal</li>
                     <li>• Health Checkup</li>
                   </ul>
-                  <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
+                  <Button 
+                    onClick={() => handleAddToCart("Shell Shine (Turtles)")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -259,7 +306,10 @@ export const Grooming = () => {
                     <li>• Hoof Cleaning & Care</li>
                     <li>• Skin Moisturising</li>
                   </ul>
-                  <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
+                  <Button 
+                    onClick={() => handleAddToCart("Hoof & Mane Spa (Horses)")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -285,7 +335,10 @@ export const Grooming = () => {
                     <li>• Ear cleaning</li>
                     <li>• Health checkups</li>
                   </ul>
-                  <Button className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300">
+                  <Button 
+                    onClick={() => handleAddToCart("Customized Grooming (Exotic Pets)")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full mt-3 hover:bg-purple-300"
+                  >
                     Add to Cart
                   </Button>
                 </div>
@@ -397,6 +450,11 @@ export const Grooming = () => {
           </div>
         </div>
       </div>
+      
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
     </div>
   );
 };
