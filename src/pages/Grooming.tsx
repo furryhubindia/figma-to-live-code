@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { BookingModal } from "@/components/BookingModal";
+import { CartModal } from "@/components/CartModal";
 import { useState } from "react";
 
 export const Grooming = () => {
   const navigate = useNavigate();
   const { addToCart, cartCount } = useCart();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
 
   const packagePrices: { [key: string]: string } = {
     "Wag & Wash (Dogs)": "₹899",
@@ -42,7 +44,7 @@ export const Grooming = () => {
           </div>
           <div className="flex items-center gap-3">
             <button 
-              onClick={() => setIsBookingModalOpen(true)}
+              onClick={() => setIsCartModalOpen(true)}
               className="relative p-2"
             >
               <ShoppingCart className="w-6 h-6 text-gray-800" />
@@ -465,6 +467,11 @@ export const Grooming = () => {
       <BookingModal 
         isOpen={isBookingModalOpen} 
         onClose={() => setIsBookingModalOpen(false)} 
+      />
+      <CartModal 
+        isOpen={isCartModalOpen} 
+        onClose={() => setIsCartModalOpen(false)}
+        onProceedToBook={() => setIsBookingModalOpen(true)}
       />
     </div>
   );

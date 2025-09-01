@@ -8,9 +8,10 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Textarea } from "@/components/ui/textarea";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import { CalendarIcon, Clock } from "lucide-react";
+import { CalendarIcon, Clock, X } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
+import { useCart } from "@/contexts/CartContext";
 
 interface BookingModalProps {
   isOpen: boolean;
@@ -28,6 +29,7 @@ const stores = ["Marshal Pet zone", "Leo Pet zone"];
 const timeSlots = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
 
 export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
+  const { cartItems, removeFromCart } = useCart();
   const [selectedPet, setSelectedPet] = useState<number | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date>();
   const [selectedTime, setSelectedTime] = useState<string>("");
@@ -80,6 +82,31 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
         </DialogHeader>
 
         <div className="space-y-6 mt-6">
+          {/* Cart Items */}
+          {cartItems.length > 0 && (
+            <div>
+              <Label className="text-sm font-medium text-gray-700 mb-3 block">Selected Services</Label>
+              <div className="space-y-2 max-h-32 overflow-y-auto">
+                {cartItems.map((item) => (
+                  <div key={item.id} className="flex items-center justify-between p-2 bg-gray-50 rounded-lg">
+                    <div className="flex-1">
+                      <p className="font-medium text-gray-800 text-sm">{item.name}</p>
+                      <p className="text-green-600 font-semibold text-xs">{item.price}</p>
+                    </div>
+                    <Button
+                      onClick={() => removeFromCart(item.id)}
+                      variant="ghost"
+                      size="sm"
+                      className="text-red-500 hover:text-red-700 hover:bg-red-50 p-1"
+                    >
+                      <X className="w-3 h-3" />
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
           {/* Date and Time */}
           <div className="flex gap-4">
             <div className="flex-1">
