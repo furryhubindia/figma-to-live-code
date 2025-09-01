@@ -2,63 +2,78 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
+import { useCart } from "@/contexts/CartContext";
+import { CartModal } from "@/components/CartModal";
+import { BookingModal } from "@/components/BookingModal";
+import { ShoppingCart } from "lucide-react";
 
 const Training = () => {
   const navigate = useNavigate();
-  const [cart, setCart] = useState<string[]>([]);
-
-  const addToCart = (packageName: string) => {
-    setCart([...cart, packageName]);
-    // You can add toast notification here if needed
-  };
+  const { cartItems, addToCart, cartCount } = useCart();
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
 
   const trainingPackages = [
     {
+      id: "obedience-basics",
       title: "OBEDIENCE BASICS",
       includes: ["Sit", "Stay", "Come", "Heel", "No Jumping", "Leash Walking"],
       recommended: "Dogs, Cats",
+      price: "₹1299",
       bgColor: "bg-gradient-to-br from-red-400 to-red-500",
       icon: "🐕‍🦺"
     },
     {
+      id: "behaviour-correction",
       title: "BEHAVIOUR CORRECTION",
       includes: ["Barking Issues", "Aggression Management", "Litter Training", "Chewing & Biting Issues"],
       recommended: "Dogs, Cats, Rabbits",
+      price: "₹1599",
       bgColor: "bg-gradient-to-br from-red-400 to-red-500",
       icon: "🦮"
     },
     {
+      id: "trick-training",
       title: "TRICK TRAINING",
       includes: ["Roll Over", "Play Dead", "Fetch", "High Five", "Spin", "Jump Through Hoops"],
       recommended: "Dogs, Parrots (Birds)",
+      price: "₹999",
       bgColor: "bg-gradient-to-br from-red-400 to-red-500",
       icon: "🤸‍♂️"
     },
     {
+      id: "equestrian-essentials",
       title: "EQUESTRIAN ESSENTIALS",
       includes: ["Basic Commands", "Haltering", "Groundwork", "Leading", "Grooming Techniques"],
       recommended: "Horses",
+      price: "₹2499",
       bgColor: "bg-gradient-to-br from-red-400 to-red-500",
       icon: "🐎"
     },
     {
+      id: "advanced-guard-training",
       title: "ADVANCED GUARD TRAINING",
       includes: ["Guard Commands", "Scent Tracking", "Territory Protection"],
       recommended: "Dogs",
+      price: "₹1899",
       bgColor: "bg-gradient-to-br from-red-400 to-red-500",
       icon: "🛡️"
     },
     {
+      id: "socialization-training",
       title: "SOCIALIZATION TRAINING",
       includes: ["Interaction with Other Pets", "Familiarity with Public Spaces", "Calming Techniques"],
       recommended: "Dogs, Cats, Parrots",
+      price: "₹1199",
       bgColor: "bg-gradient-to-br from-red-400 to-red-500",
       icon: "🏠"
     },
     {
+      id: "customized-training",
       title: "CUSTOMIZED TRAINING PROGRAM",
       includes: ["Tailored training based on your pet's specific needs"],
       recommended: "All Pets",
+      price: "₹1799",
       bgColor: "bg-gradient-to-br from-red-400 to-red-500",
       icon: "⚙️"
     }
@@ -121,9 +136,27 @@ const Training = () => {
             </button>
             <h1 className="text-2xl font-black text-gray-800">FURRY TRAINING</h1>
           </div>
-          <Button className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300">
-            Book now
-          </Button>
+          <div className="flex items-center gap-3">
+            <Button 
+              onClick={() => setIsBookingModalOpen(true)}
+              className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300"
+            >
+              Book now
+            </Button>
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => setIsCartModalOpen(true)}
+              className="relative rounded-full bg-orange-400 hover:bg-orange-500 text-white hover:text-white w-10 h-10"
+            >
+              <ShoppingCart className="h-5 w-5" />
+              {cartCount > 0 && (
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {cartCount}
+                </span>
+              )}
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -141,7 +174,10 @@ const Training = () => {
                 >
                   Explore Packages
                 </Button>
-                <Button className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300">
+                <Button 
+                  onClick={() => setIsBookingModalOpen(true)}
+                  className="bg-purple-200 text-gray-800 font-semibold px-6 py-2 rounded-full hover:bg-purple-300"
+                >
                   Book now
                 </Button>
               </div>
@@ -244,8 +280,14 @@ const Training = () => {
                     <div className="text-xs text-gray-600 mt-2 mb-3">
                       <span className="font-semibold">Recommended For:</span> {pkg.recommended}
                     </div>
+                    <div className="text-lg font-bold text-green-600 mb-3">{pkg.price}</div>
                     <Button 
-                      onClick={() => addToCart(pkg.title)}
+                      onClick={() => addToCart({
+                        id: pkg.id,
+                        name: pkg.title,
+                        price: pkg.price,
+                        type: 'training'
+                      })}
                       className="bg-red-400 text-white font-semibold px-4 py-2 rounded-full hover:bg-red-500"
                     >
                       Add to Cart
@@ -318,6 +360,17 @@ const Training = () => {
           <p className="text-sm text-gray-700 mt-2">Social</p>
         </div>
       </div>
+      
+      {/* Modals */}
+      <CartModal 
+        isOpen={isCartModalOpen} 
+        onClose={() => setIsCartModalOpen(false)}
+        onProceedToBook={() => setIsBookingModalOpen(true)}
+      />
+      <BookingModal 
+        isOpen={isBookingModalOpen} 
+        onClose={() => setIsBookingModalOpen(false)} 
+      />
     </div>
   );
 };

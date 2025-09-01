@@ -3,12 +3,14 @@ import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { BookingModal } from "@/components/BookingModal";
+import { CartModal } from "@/components/CartModal";
 import { useCart } from "@/contexts/CartContext";
 import { ShoppingCart } from "lucide-react";
 
 export const PetSitting = () => {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
-  const { cart, addToCart } = useCart();
+  const [isCartModalOpen, setIsCartModalOpen] = useState(false);
+  const { cartItems, addToCart, cartCount } = useCart();
   
   const scrollToPackages = () => {
     const packagesSection = document.getElementById('packages-section');
@@ -183,13 +185,13 @@ export const PetSitting = () => {
             <Button 
               variant="ghost" 
               size="icon"
-              onClick={() => setIsBookingModalOpen(true)}
-              className="relative rounded-full bg-furry-purple hover:bg-furry-purple/90 text-white hover:text-white w-10 h-10"
+              onClick={() => setIsCartModalOpen(true)}
+              className="relative rounded-full bg-orange-400 hover:bg-orange-500 text-white hover:text-white w-10 h-10"
             >
               <ShoppingCart className="h-5 w-5" />
-              {cart.length > 0 && (
+              {cartCount > 0 && (
                 <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {cart.length}
+                  {cartCount}
                 </span>
               )}
             </Button>
@@ -357,7 +359,7 @@ export const PetSitting = () => {
                       })}
                       className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full"
                     >
-                      Book now
+                      Add to Cart
                     </Button>
                   </div>
                 </div>
@@ -450,6 +452,11 @@ export const PetSitting = () => {
         </div>
       </div>
 
+      <CartModal 
+        isOpen={isCartModalOpen} 
+        onClose={() => setIsCartModalOpen(false)}
+        onProceedToBook={() => setIsBookingModalOpen(true)}
+      />
       <BookingModal 
         isOpen={isBookingModalOpen}
         onClose={() => setIsBookingModalOpen(false)}
