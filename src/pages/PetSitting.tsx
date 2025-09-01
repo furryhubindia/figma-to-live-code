@@ -158,24 +158,23 @@ export const PetSitting = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
+    <div className="min-h-screen bg-white">
       {/* Header */}
-      <div className="w-full bg-white/95 backdrop-blur-sm border-b border-gray-200 px-4 py-3 md:px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
+      <div className="bg-white shadow-sm px-4 py-3">
+        <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
             <img 
               src="/lovable-uploads/1e65733e-72da-4657-999d-da4b9d32af9c.png" 
               alt="FurryHub Logo" 
-              className="w-12 h-12 md:w-14 md:h-14 object-contain"
+              className="w-8 h-8 object-contain"
             />
-            <h1 className="text-2xl md:text-3xl font-bold text-gray-800">
+            <h1 className="text-2xl font-black text-gray-800">
               FURRY HOME
             </h1>
           </div>
           
-          <div className="flex items-center space-x-3">
+          <div className="flex items-center gap-3">
             <Button 
-              variant="default"
               onClick={() => setIsBookingModalOpen(true)}
               className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full"
             >
@@ -199,129 +198,109 @@ export const PetSitting = () => {
         </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-orange-100 to-red-100 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 left-10 w-32 h-32 bg-furry-lime rounded-full opacity-30"></div>
-          <div className="absolute bottom-10 right-10 w-48 h-48 bg-orange-300 rounded-full opacity-20"></div>
-          <div className="absolute top-1/2 left-1/4 w-24 h-24 bg-red-300 rounded-full opacity-25"></div>
-        </div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4 py-12 md:py-20">
-          <div className="flex items-center justify-between">
-            <div className="flex-1">
-              <h1 className="text-4xl md:text-6xl font-bold text-gray-800 mb-6">
-                ALL PETS, ALL <span className="text-furry-lime">CARE</span>,<br />
-                ALL TAILORED FOR <span className="text-furry-lime">COMFORT</span>!!
-              </h1>
-              
-              <div className="flex flex-wrap gap-4 mt-8">
+      <div className="max-w-4xl mx-auto px-4">
+        {/* Hero Section */}
+        <div className="relative bg-gradient-to-r from-orange-200 to-red-200 rounded-3xl p-8 my-6 overflow-hidden">
+          <div className="flex items-center gap-8">
+            <div className="flex-1 relative z-10">
+              <h2 className="text-3xl font-black text-gray-800 mb-2">ALL PETS, ALL <span className="text-red-600">CARE</span>,</h2>
+              <h2 className="text-3xl font-black text-gray-800 mb-6">ALL TAILORED FOR <span className="text-red-600">COMFORT</span>!!</h2>
+              <div className="flex gap-3">
                 <Button 
                   onClick={scrollToPackages}
-                  className="bg-red-500 hover:bg-red-600 text-white px-8 py-3 rounded-full text-lg font-semibold"
+                  className="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-2 rounded-full"
                 >
                   Explore Packages
                 </Button>
                 <Button 
                   onClick={() => setIsBookingModalOpen(true)}
-                  variant="outline"
-                  className="border-orange-500 text-orange-500 hover:bg-orange-500 hover:text-white px-8 py-3 rounded-full text-lg font-semibold"
+                  className="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-6 py-2 rounded-full"
                 >
                   Book now
                 </Button>
               </div>
             </div>
-            
-            <div className="hidden md:block flex-shrink-0 ml-8">
+            <div className="w-80 h-60 flex-shrink-0">
               <img 
                 src="/lovable-uploads/e30af2de-fbf2-48c5-bacd-eaf8e79f3570.png" 
                 alt="Happy Dog" 
-                className="w-80 h-80 object-contain"
+                className="w-full h-full object-contain"
               />
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Menu Section */}
-      <div className="max-w-6xl mx-auto px-4 py-8">
-        <h2 className="text-3xl font-bold text-gray-800 mb-6">MENU</h2>
-        <div className="space-y-4 text-gray-700">
-          <div className="flex items-start space-x-2">
-            <span className="text-orange-500">•</span>
-            <p>Connect with trusted foster houses, dog walkers, and pet caretakers near you.</p>
-          </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-orange-500">•</span>
-            <p>Reliable and compassionate care for your pets.</p>
-          </div>
-          <div className="flex items-start space-x-2">
-            <span className="text-orange-500">•</span>
-            <p>Book services conveniently through FurryHub.</p>
-          </div>
+        {/* Menu Section */}
+        <div className="my-8">
+          <h3 className="text-xl font-black text-gray-800 mb-4">MENU</h3>
+          <ul className="space-y-2 text-gray-700">
+            <li>• Connect with trusted foster houses, dog walkers, and pet caretakers near you.</li>
+            <li>• Reliable and compassionate care for your pets.</li>
+            <li>• Book services conveniently through FurryHub.</li>
+          </ul>
         </div>
-      </div>
 
-      {/* How It Works Section */}
-      <div className="bg-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">HOW IT WORKS?</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="p-6 text-center">
-              <div className="text-4xl mb-4">🏠</div>
-              <h3 className="font-bold text-lg mb-2">Verified Foster Homes</h3>
-              <p className="text-sm text-gray-600">We connect you to licensed and loving foster homes, ensuring a safe and nurturing environment for your pets when you're away.</p>
-            </Card>
-            <Card className="p-6 text-center">
-              <div className="text-4xl mb-4">🚶‍♂️</div>
-              <h3 className="font-bold text-lg mb-2">Professional Dog Walkers</h3>
-              <p className="text-sm text-gray-600">Schedule walks for your dogs with trained and responsible walkers who ensure exercise, safety, and companionship.</p>
-            </Card>
-            <Card className="p-6 text-center">
-              <div className="text-4xl mb-4">👤</div>
-              <h3 className="font-bold text-lg mb-2">Dedicated Pet Caretakers</h3>
-              <p className="text-sm text-gray-600">Hire experienced caretakers to look after your pets at home, giving them the care and attention they deserve.</p>
-            </Card>
-            <Card className="p-6 text-center">
-              <div className="text-4xl mb-4">📱</div>
-              <h3 className="font-bold text-lg mb-2">Hassle-Free Booking</h3>
-              <p className="text-sm text-gray-600">Our platform simplifies the process of finding, reviewing, and booking services, all in one place.</p>
-            </Card>
-          </div>
-        </div>
-      </div>
-
-      {/* FurryHub's Promise Section */}
-      <div className="relative py-16 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-100 to-cyan-100"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-300 rounded-full opacity-30 transform translate-x-[-50%] translate-y-[50%]"></div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="hidden md:block flex-shrink-0 mr-8">
-              <div className="w-80 h-80 bg-gradient-to-r from-blue-300 to-cyan-300 rounded-full flex items-center justify-center">
-                <div className="text-8xl">🐕</div>
+        {/* How It Works Section */}
+        <div className="my-12">
+          <h3 className="text-2xl font-black text-gray-800 text-center mb-8">HOW IT WORKS?</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">🏠</div>
+              <div>
+                <h4 className="font-bold text-gray-800">Verified Foster Homes</h4>
+                <p className="text-sm text-gray-600">We connect you to licensed and loving foster homes, ensuring a safe and nurturing environment for your pets when you're away.</p>
               </div>
             </div>
-            
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">🚶‍♂️</div>
+              <div>
+                <h4 className="font-bold text-gray-800">Professional Dog Walkers</h4>
+                <p className="text-sm text-gray-600">Schedule walks for your dogs with trained and responsible walkers who ensure exercise, safety, and companionship.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">👤</div>
+              <div>
+                <h4 className="font-bold text-gray-800">Dedicated Pet Caretakers</h4>
+                <p className="text-sm text-gray-600">Hire experienced caretakers to look after your pets at home, giving them the care and attention they deserve.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-3">
+              <div className="text-2xl">📱</div>
+              <div>
+                <h4 className="font-bold text-gray-800">Hassle-Free Booking</h4>
+                <p className="text-sm text-gray-600">Our platform simplifies the process of finding, reviewing, and booking services, all in one place.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FurryHub's Promise */}
+        <div className="relative bg-gradient-to-br from-blue-200 to-cyan-200 rounded-3xl p-8 my-12 overflow-hidden">
+          <div className="flex flex-col md:flex-row items-center gap-8">
             <div className="flex-1">
-              <h2 className="text-4xl font-bold text-gray-800 mb-4">FURRYHUB'S PROMISE</h2>
-              <h3 className="text-2xl font-semibold text-gray-700 mb-6">Care Beyond Boundaries</h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <h3 className="text-2xl font-black text-gray-800 mb-2">FURRYHUB'S PROMISE</h3>
+              <h4 className="text-xl font-bold text-gray-800 mb-4">Care Beyond Boundaries</h4>
+              <p className="text-gray-700 text-sm leading-relaxed">
                 At FurryHub, we prioritize your pet's happiness and well-being. Whether you need a safe foster home, a reliable dog walker, or a dedicated caretaker, we ensure trusted connections and exceptional service, making pet care stress-free and seamless for you.
               </p>
             </div>
+            <div className="w-64 h-64 flex items-center justify-center">
+              <div className="text-8xl">🐕</div>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Packages Section */}
-      <div id="packages-section" className="py-16 bg-gradient-to-r from-orange-50 to-red-50">
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12">PACKAGES:</h2>
+        {/* Packages Section */}
+        <div id="packages-section" className="my-12">
+          <div className="relative">
+            <div className="absolute -left-4 -top-4 w-32 h-32 bg-orange-200 rounded-full -z-10"></div>
+            <h3 className="text-2xl font-black text-gray-800 mb-8">PACKAGES:</h3>
+          </div>
+          
           <div className="space-y-6">
             {packages.map((pkg) => (
-              <Card key={pkg.id} className={`${pkg.bgColor} text-white p-6 rounded-3xl relative overflow-hidden`}>
+              <div key={pkg.id} className="bg-green-300 text-white p-6 rounded-3xl relative overflow-hidden">
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <div className="flex items-center space-x-6">
@@ -331,7 +310,7 @@ export const PetSitting = () => {
                         </svg>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-2xl font-bold mb-2">{pkg.title}</h3>
+                        <h3 className="text-xl font-black mb-2">{pkg.title}</h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                           <div>
                             <p className="font-semibold mb-2">{pkg.description}</p>
@@ -363,92 +342,70 @@ export const PetSitting = () => {
                     </Button>
                   </div>
                 </div>
-              </Card>
+              </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Why Choose FurryHub Section */}
-      <div className="bg-white py-16 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-red-500 rounded-full opacity-20 transform translate-x-[30%] translate-y-[-30%]"></div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12">WHY CHOOSE FURRYHUB <span className="text-red-500">FOR TRAINING?</span></h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Why Choose FurryHub */}
+        <div className="my-12">
+          <div className="relative">
+            <div className="absolute -right-4 -top-4 w-32 h-32 bg-red-200 rounded-full -z-10"></div>
+            <h3 className="text-2xl font-black text-gray-800 mb-8">WHY CHOOSE FURRYHUB FOR SITTING?</h3>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {whyChooseFeatures.map((feature, index) => (
-              <div key={index} className="flex items-start space-x-4">
+              <div key={index} className="flex items-start gap-3">
                 <div className="text-2xl">{feature.icon}</div>
                 <div>
-                  <h3 className="font-bold text-lg mb-2">{feature.title}</h3>
-                  <p className="text-gray-600">{feature.description}</p>
+                  <h4 className="font-bold text-gray-800">{feature.title}</h4>
+                  <p className="text-sm text-gray-600">{feature.description}</p>
                 </div>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* FAQs Section */}
-      <div className="py-16 bg-gradient-to-r from-green-100 to-lime-100 relative overflow-hidden">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-furry-lime rounded-full opacity-30 transform translate-x-[-30%] translate-y-[30%]"></div>
-        
-        <div className="relative z-10 max-w-6xl mx-auto px-4">
-          <h2 className="text-4xl font-bold text-gray-800 mb-12">FURRYHUB HOME FAQS</h2>
+        {/* FAQs */}
+        <div className="my-12">
+          <div className="relative">
+            <div className="absolute -left-4 -top-4 w-32 h-32 bg-cyan-200 rounded-full -z-10"></div>
+            <h3 className="text-2xl font-black text-gray-800 mb-8">FURRYHUB HOME FAQS</h3>
+          </div>
+          
           <div className="space-y-6">
             {faqs.map((faq, index) => (
-              <div key={index} className="bg-white/80 backdrop-blur-sm rounded-2xl p-6">
-                <h3 className="font-bold text-lg text-gray-800 mb-2">{faq.question}</h3>
+              <div key={index} className="bg-white rounded-lg p-6 shadow-sm border border-gray-100">
+                <h4 className="font-bold text-gray-800 mb-2">{faq.question}</h4>
                 <p className="text-gray-600">{faq.answer}</p>
               </div>
             ))}
           </div>
         </div>
-      </div>
 
-      {/* Book Now Section */}
-      <div className="bg-gradient-to-r from-orange-400 to-red-400 py-16 text-center text-white relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-10 right-10 w-32 h-32 bg-white/10 rounded-full"></div>
-          <div className="absolute bottom-10 left-10 w-48 h-48 bg-white/5 rounded-full"></div>
+        {/* Book Now Section */}
+        <div className="relative bg-gradient-to-br from-orange-400 to-red-400 rounded-3xl p-8 my-12 text-white text-center">
+          <h3 className="text-3xl font-black mb-4">BOOK NOW..!!</h3>
+          <p className="text-lg mb-2">Pet care at your fingertips, for any pet, anytime, anywhere.</p>
+          <p className="text-lg">Let FurryHub help your companions feel loved and cared for with professional service.</p>
         </div>
-        
-        <div className="relative z-10 max-w-4xl mx-auto px-4">
-          <h2 className="text-5xl font-bold mb-4">BOOK NOW..!!</h2>
-          <p className="text-xl mb-2">Care at your fingertips, for any pet, anytime, anywhere.</p>
-          <p className="text-lg">Let FurryHub provide comfort and companionship with love and expertise.</p>
-        </div>
-      </div>
 
-      {/* Footer */}
-      <div className="bg-furry-lime text-white py-8">
-        <div className="max-w-6xl mx-auto px-4 text-center">
-          <div className="mb-6">
-            <h3 className="text-xl font-bold mb-2">Contact Us</h3>
-            <p>Email to furryhubindia@gmail.com</p>
-          </div>
+        {/* Contact Section */}
+        <div className="relative bg-orange-300 rounded-3xl p-8 my-12 text-center">
+          <h4 className="font-bold text-gray-800 mb-2">Contact Us</h4>
+          <p className="text-gray-700 mb-4">Email to furryhubindia@gmail.com</p>
+          <p className="text-sm text-gray-700 mb-4">FurryHub: Your one-stop destination for all things pets—care, love, and convenience at your fingertips!</p>
           
-          <div className="mb-6">
-            <p className="text-sm">FurryHub: Your one-stop destination for all things pets—care, love, and convenience at your fingertips!</p>
-          </div>
+          <Button className="bg-green-500 hover:bg-green-600 text-white mb-4">
+            📱 Message us on WhatsApp
+          </Button>
           
-          <div className="flex justify-center items-center space-x-4">
-            <Button className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-full">
-              💬 Message us on WhatsApp
-            </Button>
+          <div className="flex justify-center space-x-4">
+            <div className="text-2xl">📸</div>
+            <div className="text-2xl">📘</div>
           </div>
-          
-          <div className="mt-6">
-            <h4 className="font-bold mb-2">Social</h4>
-            <div className="flex justify-center space-x-4">
-              <div className="w-10 h-10 bg-pink-500 rounded-lg flex items-center justify-center">
-                <span className="text-white">📷</span>
-              </div>
-              <div className="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white">f</span>
-              </div>
-            </div>
-          </div>
+          <p className="text-sm text-gray-700 mt-2">Social</p>
         </div>
       </div>
 
