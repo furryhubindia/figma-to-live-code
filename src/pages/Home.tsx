@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useNavigate } from "react-router-dom";
+import { SignupModal } from "@/components/SignupModal";
 
 export const Home = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e: React.FormEvent) => {
@@ -120,7 +122,7 @@ export const Home = () => {
             <button
               type="button"
               className="text-blue-500 hover:text-blue-600 font-medium"
-              onClick={() => {/* Handle create account */}}
+              onClick={() => setIsSignupModalOpen(true)}
             >
               Create an Account!
             </button>
@@ -138,6 +140,11 @@ export const Home = () => {
           </div>
         </div>
       </div>
+
+      <SignupModal 
+        isOpen={isSignupModalOpen}
+        onClose={() => setIsSignupModalOpen(false)}
+      />
     </div>
   );
 };

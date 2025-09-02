@@ -3,7 +3,11 @@ import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
 
-export const Header = () => {
+interface HeaderProps {
+  onSignupClick?: () => void;
+}
+
+export const Header = ({ onSignupClick }: HeaderProps) => {
   const navigate = useNavigate();
 
   return (
@@ -27,6 +31,7 @@ export const Header = () => {
           <Button 
             variant="ghost" 
             size="icon"
+            onClick={onSignupClick}
             className="rounded-full bg-furry-purple hover:bg-furry-purple/90 text-white hover:text-white w-10 h-10"
           >
             <User className="h-5 w-5" />

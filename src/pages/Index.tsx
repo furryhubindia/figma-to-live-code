@@ -2,6 +2,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { ServiceCard } from "@/components/ServiceCard";
 import { ComingSoonModal } from "@/components/ComingSoonModal";
+import { SignupModal } from "@/components/SignupModal";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import winterBg from "@/assets/winter-background.jpg";
@@ -19,6 +20,7 @@ const Index = () => {
   const navigate = useNavigate();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState("");
+  const [isSignupModalOpen, setIsSignupModalOpen] = useState(false);
   const services = [
     { title: "HOME", bgColor: "bg-furry-cyan", textColor: "text-white", image: homePet },
     { title: "GROOMING", bgColor: "bg-furry-orange", textColor: "text-white", image: groomingPet },
@@ -57,7 +59,7 @@ const Index = () => {
 
       {/* Content */}
       <div className="relative z-10">
-        <Header />
+        <Header onSignupClick={() => setIsSignupModalOpen(true)} />
         
         <main className="container mx-auto px-4 py-8 md:py-12">
           <div className="max-w-6xl mx-auto">
@@ -154,6 +156,11 @@ const Index = () => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         serviceName={selectedService}
+      />
+      
+      <SignupModal 
+        isOpen={isSignupModalOpen}
+        onClose={() => setIsSignupModalOpen(false)}
       />
     </div>
   );
