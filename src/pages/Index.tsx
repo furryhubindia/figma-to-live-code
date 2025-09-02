@@ -110,7 +110,9 @@ const Index = () => {
                   textColor={service.textColor}
                   image={service.image}
                   onClick={() => {
-                    if (service.title === "GROOMING") {
+                    if (service.title === "HOME") {
+                      navigate("/home");
+                    } else if (service.title === "GROOMING") {
                       navigate("/grooming");
                     } else if (service.title === "PET TRAINING") {
                       navigate("/training");
