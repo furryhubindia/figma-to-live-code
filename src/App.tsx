@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import { Grooming } from "./pages/Grooming";
 import Training from "./pages/Training";
 import PetSitting from "./pages/PetSitting";
+import VetOnCall from "./pages/VetOnCall";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +25,7 @@ const App = () => (
           <Route path="/grooming" element={<Grooming />} />
           <Route path="/training" element={<Training />} />
           <Route path="/pet-sitting" element={<PetSitting />} />
+          <Route path="/vet-on-call" element={<VetOnCall />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

@@ -120,6 +120,8 @@ const Index = () => {
                       navigate("/training");
                     } else if (service.title === "PET SITTING") {
                       navigate("/pet-sitting");
+                    } else if (service.title === "VET ON CALL") {
+                      navigate("/vet-on-call");
                     } else {
                       setSelectedService(service.title);
                       setIsModalOpen(true);

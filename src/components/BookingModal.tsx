@@ -16,6 +16,7 @@ import { useCart } from "@/contexts/CartContext";
 interface BookingModalProps {
   isOpen: boolean;
   onClose: () => void;
+  serviceName?: string;
 }
 
 const petProfiles = [
@@ -28,7 +29,7 @@ const cities = ["Hyderabad", "Vijayawada", "Guntur", "Vishakhpatnam", "Warangal"
 const stores = ["Marshal Pet zone", "Leo Pet zone"];
 const timeSlots = ["9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM", "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"];
 
-export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
+export const BookingModal = ({ isOpen, onClose, serviceName }: BookingModalProps) => {
   const { cartItems, removeFromCart } = useCart();
   const [selectedPet, setSelectedPet] = useState<number | null>(null);
   const [selectedDate, setSelectedDate] = useState<Date>();
@@ -57,7 +58,7 @@ export const BookingModal = ({ isOpen, onClose }: BookingModalProps) => {
       <DialogContent className="sm:max-w-lg bg-white rounded-3xl p-6 max-h-[90vh] overflow-y-auto">
         <DialogHeader className="space-y-4">
           <DialogTitle className="text-center text-xl font-bold text-gray-800">
-            Book Your Service
+            {serviceName ? `Book ${serviceName}` : "Book Your Service"}
           </DialogTitle>
           
           {/* Pet Profiles */}
