@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Header } from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -8,6 +9,7 @@ import { useCart } from "@/contexts/CartContext";
 import { ShoppingCart } from "lucide-react";
 
 export const PetSitting = () => {
+  const navigate = useNavigate();
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
   const [isCartModalOpen, setIsCartModalOpen] = useState(false);
   const { cartItems, addToCart, cartCount } = useCart();
@@ -163,11 +165,13 @@ export const PetSitting = () => {
       <div className="bg-white shadow-sm px-4 py-3">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <img 
-              src="/lovable-uploads/1e65733e-72da-4657-999d-da4b9d32af9c.png" 
-              alt="FurryHub Logo" 
-              className="w-8 h-8 object-contain"
-            />
+            <button onClick={() => navigate("/")} className="cursor-pointer">
+              <img 
+                src="/lovable-uploads/1e65733e-72da-4657-999d-da4b9d32af9c.png" 
+                alt="FurryHub Logo" 
+                className="w-8 h-8 object-contain"
+              />
+            </button>
             <h1 className="text-2xl font-black text-gray-800">
               FURRY HOME
             </h1>
