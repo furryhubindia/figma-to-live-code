@@ -208,20 +208,12 @@ const VetOnCall = () => {
                     <li>• Diagnosis and advice for common issues</li>
                     <li>• Prescription recommendations if needed</li>
                   </ul>
-                  <div className="flex gap-2">
-                    <Button 
-                      onClick={() => handleAddToCart("Online Consultation")}
-                      className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button 
-                      onClick={() => handleBookNow("Online Consultation")}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full"
-                    >
-                      Book Now
-                    </Button>
-                  </div>
+                  <Button 
+                    onClick={() => handleAddToCart("Online Consultation")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               </div>
             </div>
@@ -245,20 +237,12 @@ const VetOnCall = () => {
                     <li>• Vaccinations and general health checks</li>
                     <li>• Treatment for minor issues</li>
                   </ul>
-                  <div className="flex gap-2">
-                    <Button 
-                      onClick={() => handleAddToCart("Home Visit - Standard")}
-                      className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button 
-                      onClick={() => handleBookNow("Home Visit - Standard")}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full"
-                    >
-                      Book Now
-                    </Button>
-                  </div>
+                  <Button 
+                    onClick={() => handleAddToCart("Home Visit - Standard")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               </div>
             </div>
@@ -282,20 +266,12 @@ const VetOnCall = () => {
                     <li>• Critical care and support at your home</li>
                     <li>• Equipped vets with medical tools for emergencies</li>
                   </ul>
-                  <div className="flex gap-2">
-                    <Button 
-                      onClick={() => handleAddToCart("Emergency Care")}
-                      className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button 
-                      onClick={() => handleBookNow("Emergency Care")}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full"
-                    >
-                      Book Now
-                    </Button>
-                  </div>
+                  <Button 
+                    onClick={() => handleAddToCart("Emergency Care")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               </div>
             </div>
@@ -319,20 +295,12 @@ const VetOnCall = () => {
                     <li>• Priority slots for urgent care</li>
                     <li>• Access to advanced diagnostic and treatment facilities</li>
                   </ul>
-                  <div className="flex gap-2">
-                    <Button 
-                      onClick={() => handleAddToCart("Clinic Appointment")}
-                      className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
-                    >
-                      Add to Cart
-                    </Button>
-                    <Button 
-                      onClick={() => handleBookNow("Clinic Appointment")}
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-full"
-                    >
-                      Book Now
-                    </Button>
-                  </div>
+                  <Button 
+                    onClick={() => handleAddToCart("Clinic Appointment")}
+                    className="bg-purple-200 text-gray-800 font-semibold px-4 py-2 rounded-full hover:bg-purple-300"
+                  >
+                    Add to Cart
+                  </Button>
                 </div>
               </div>
             </div>
