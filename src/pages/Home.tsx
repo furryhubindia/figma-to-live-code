@@ -128,6 +128,7 @@ export const Home = () => {
             >
               Create an Account!
             </button>
+            <p className="text-gray-500 text-sm mt-2">Signup for Furry Squad</p>
           </div>
 
           {/* Back to Home button */}
