@@ -16,6 +16,8 @@ export const Home = () => {
     e.preventDefault();
     // Handle login logic here
     console.log("Login attempt:", { email, password, rememberMe });
+    // Redirect to user dashboard after login
+    navigate('/dashboard');
   };
 
   return (
