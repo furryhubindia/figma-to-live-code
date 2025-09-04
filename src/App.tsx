@@ -9,6 +9,7 @@ import { Grooming } from "./pages/Grooming";
 import Training from "./pages/Training";
 import PetSitting from "./pages/PetSitting";
 import VetOnCall from "./pages/VetOnCall";
+import FurrySquadRegister from "./pages/FurrySquadRegister";
 import { UserDashboard } from "./pages/UserDashboard";
 import NotFound from "./pages/NotFound";
 
@@ -23,6 +24,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/furry-squad-register" element={<FurrySquadRegister />} />
           <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="/grooming" element={<Grooming />} />
           <Route path="/training" element={<Training />} />

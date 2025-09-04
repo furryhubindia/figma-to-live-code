@@ -128,7 +128,13 @@ export const Home = () => {
             >
               Create an Account!
             </button>
-            <p className="text-gray-500 text-sm mt-2">Signup for Furry Squad</p>
+            <button
+              type="button"
+              className="text-blue-500 hover:text-blue-600 font-medium"
+              onClick={() => navigate('/furry-squad-register')}
+            >
+              Signup for Furry Squad
+            </button>
           </div>
 
           {/* Back to Home button */}
