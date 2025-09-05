@@ -37,7 +37,7 @@ export const FurrySquadRegister = () => {
     e.preventDefault();
     console.log("Registration data:", formData);
     // Handle registration logic here
-    navigate('/dashboard');
+    navigate('/furry-squad-dashboard');
   };
 
   return (
