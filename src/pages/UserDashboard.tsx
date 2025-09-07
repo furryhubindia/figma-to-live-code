@@ -23,12 +23,12 @@ export const UserDashboard = () => {
   const [isAddPetModalOpen, setIsAddPetModalOpen] = useState(false);
   const [hasPets, setHasPets] = useState(false); // Mock state for demonstration
 
-  const handleServiceClick = () => {
+  const handleServiceClick = (path: string) => {
     if (!hasPets) {
       setIsAddPetModalOpen(true);
     } else {
       // Navigate to service page if pets are added
-      console.log("Navigating to service...");
+      navigate(path);
     }
   };
 
@@ -98,7 +98,7 @@ export const UserDashboard = () => {
                     title={service.title}
                     bgColor={service.bgColor}
                     image={service.image}
-                    onClick={handleServiceClick}
+                    onClick={() => handleServiceClick(service.path)}
                   />
                 ))}
               </div>
