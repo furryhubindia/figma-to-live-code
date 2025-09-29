@@ -1,11 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { Home, Calendar, User, PawPrint, MapPin, Clock, HelpCircle, FileText, Shield, LogOut } from "lucide-react";
+import { Home, Calendar, User, PawPrint, MapPin, Clock, HelpCircle, FileText, Shield, LogOut, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ServiceCard } from "@/components/ServiceCard";
 import { AddPetModal } from "@/components/AddPetModal";
+
+interface Pet {
+  id: string;
+  name: string;
+  breed: string;
+  age: string;
+  gender: string;
+  weight: string;
+  color: string;
+}
 
 // Import service images
 import groomingImage from "@/assets/grooming-pet.png";
@@ -21,15 +31,32 @@ export const UserDashboard = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("home");
   const [isAddPetModalOpen, setIsAddPetModalOpen] = useState(false);
-  const [hasPets, setHasPets] = useState(false); // Mock state for demonstration
+  const [pets, setPets] = useState<Pet[]>([]);
+
+  // Load pets from localStorage on component mount
+  useEffect(() => {
+    const savedPets = localStorage.getItem('userPets');
+    if (savedPets) {
+      setPets(JSON.parse(savedPets));
+    }
+  }, []);
 
   const handleServiceClick = (path: string) => {
-    if (!hasPets) {
+    if (pets.length === 0) {
       setIsAddPetModalOpen(true);
     } else {
       // Navigate to service page if pets are added
       navigate(path);
     }
+  };
+
+  const handlePetAdded = () => {
+    // Reload pets from localStorage
+    const savedPets = localStorage.getItem('userPets');
+    if (savedPets) {
+      setPets(JSON.parse(savedPets));
+    }
+    setIsAddPetModalOpen(false);
   };
 
   const handleLogout = () => {
@@ -86,9 +113,21 @@ export const UserDashboard = () => {
         <Tabs value={activeTab} onValueChange={setActiveTab}>
           <TabsContent value="home" className="mt-0">
             <div className="space-y-6">
-              <div className="text-center">
-                <h2 className="text-3xl font-bold text-gray-800 mb-2">Our Services</h2>
-                <p className="text-gray-600">Choose from our comprehensive pet care services</p>
+              <div className="flex items-center justify-between">
+                <div className="text-center flex-1">
+                  <h2 className="text-3xl font-bold text-gray-800 mb-2">Our Services</h2>
+                  <p className="text-gray-600">Choose from our comprehensive pet care services</p>
+                </div>
+                {pets.length > 0 && (
+                  <Button
+                    onClick={() => setIsAddPetModalOpen(true)}
+                    variant="outline"
+                    className="flex items-center gap-2"
+                  >
+                    <PawPrint className="w-4 h-4" />
+                    Add Pet
+                  </Button>
+                )}
               </div>
               
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -123,14 +162,61 @@ export const UserDashboard = () => {
             <div className="space-y-4">
               <h3 className="text-xl font-semibold text-gray-800 mb-4">Account Settings</h3>
               
-              {accountOptions.map((option, index) => (
-                <Card key={index} className="p-4 hover:shadow-md transition-shadow cursor-pointer">
-                  <div className="flex items-center space-x-3">
-                    <option.icon className="w-5 h-5 text-gray-600" />
-                    <span className="text-gray-800 font-medium">{option.label}</span>
-                  </div>
-                </Card>
-              ))}
+              {accountOptions.map((option, index) => {
+                if (option.label === "My Pet Profile") {
+                  return (
+                    <Card key={index} className="p-4 hover:shadow-md transition-shadow cursor-pointer">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center space-x-3">
+                          <option.icon className="w-5 h-5 text-gray-600" />
+                          <span className="text-gray-800 font-medium">{option.label}</span>
+                        </div>
+                        <Button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setIsAddPetModalOpen(true);
+                          }}
+                          variant="outline"
+                          size="sm"
+                          className="flex items-center gap-1"
+                        >
+                          <Plus className="w-3 h-3" />
+                          Add Pet
+                        </Button>
+                      </div>
+                      {pets.length > 0 ? (
+                        <div className="mt-4 space-y-3">
+                          {pets.map((pet) => (
+                            <Card key={pet.id} className="p-3 bg-gray-50">
+                              <div className="grid grid-cols-2 gap-2 text-sm">
+                                <div><span className="font-medium">Name:</span> {pet.name}</div>
+                                <div><span className="font-medium">Breed:</span> {pet.breed}</div>
+                                <div><span className="font-medium">Age:</span> {pet.age}</div>
+                                <div><span className="font-medium">Gender:</span> {pet.gender}</div>
+                                <div><span className="font-medium">Weight:</span> {pet.weight}</div>
+                                <div><span className="font-medium">Color:</span> {pet.color}</div>
+                              </div>
+                            </Card>
+                          ))}
+                        </div>
+                      ) : (
+                        <div className="mt-4 text-center py-4 text-gray-500">
+                          <PawPrint className="w-8 h-8 mx-auto mb-2 text-gray-400" />
+                          <p>No pets added yet</p>
+                        </div>
+                      )}
+                    </Card>
+                  );
+                }
+                return (
+                  <Card key={index} className="p-4 hover:shadow-md transition-shadow cursor-pointer">
+                    <div className="flex items-center space-x-3">
+                      <option.icon className="w-5 h-5 text-gray-600" />
+                      <span className="text-gray-800 font-medium">{option.label}</span>
+                    </div>
+                  </Card>
+                );
+              })}
               
               <Card 
                 className="p-4 hover:shadow-md transition-shadow cursor-pointer border-red-200 hover:border-red-300"
@@ -193,10 +279,7 @@ export const UserDashboard = () => {
       <AddPetModal 
         isOpen={isAddPetModalOpen}
         onClose={() => setIsAddPetModalOpen(false)}
-        onPetAdded={() => {
-          setHasPets(true);
-          setIsAddPetModalOpen(false);
-        }}
+        onPetAdded={handlePetAdded}
       />
     </div>
   );

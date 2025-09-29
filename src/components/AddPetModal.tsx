@@ -27,8 +27,32 @@ export const AddPetModal = ({ isOpen, onClose, onPetAdded }: AddPetModalProps) =
   };
 
   const handleAddPet = () => {
-    // Mock pet addition - in real app this would save to database
-    console.log("Adding pet:", petData);
+    // Generate unique ID for the pet
+    const petWithId = {
+      ...petData,
+      id: Date.now().toString()
+    };
+    
+    // Get existing pets from localStorage
+    const existingPets = localStorage.getItem('userPets');
+    const pets = existingPets ? JSON.parse(existingPets) : [];
+    
+    // Add new pet to the array
+    pets.push(petWithId);
+    
+    // Save back to localStorage
+    localStorage.setItem('userPets', JSON.stringify(pets));
+    
+    // Reset form
+    setPetData({
+      name: "",
+      breed: "",
+      age: "",
+      gender: "",
+      weight: "",
+      color: ""
+    });
+    
     onPetAdded();
   };
 
