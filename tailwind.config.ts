@@ -18,7 +18,15 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'system-ui', 'sans-serif'],
+			},
 			colors: {
+				'grooming-primary': 'hsl(var(--grooming-primary))',
+				'grooming-secondary': 'hsl(var(--grooming-secondary))',
+				'grooming-accent': 'hsl(var(--grooming-accent))',
+				'grooming-teal': 'hsl(var(--grooming-teal))',
+				'grooming-emerald': 'hsl(var(--grooming-emerald))',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',

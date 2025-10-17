@@ -42,13 +42,13 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 0 0% 9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 0 0% 9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 0 0% 9%;
 
     --primary: 263 70% 50%;
     --primary-foreground: 0 0% 100%;
@@ -69,6 +69,13 @@ All colors MUST be HSL.
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
 
+    /* Premium Grooming Colors */
+    --grooming-primary: 280 85% 60%;
+    --grooming-secondary: 45 100% 60%;
+    --grooming-accent: 340 82% 52%;
+    --grooming-teal: 180 77% 48%;
+    --grooming-emerald: 160 84% 39%;
+    
     /* FurryHub Brand Colors */
     --furry-cyan: 185 100% 45%;
     --furry-orange: 25 100% 50%;
@@ -81,7 +88,7 @@ All colors MUST be HSL.
     --winter-overlay: 200 30% 90%;
     --snow-white: 0 0% 98%;
 
-    --radius: 1rem;
+    --radius: 1.5rem;
 
     --sidebar-background: 0 0% 98%;
 
@@ -146,5 +153,8 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
