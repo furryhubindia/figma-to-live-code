@@ -1,3 +1,5 @@
+import { MessageCircle, Instagram, Facebook } from "lucide-react";
+
 export const Footer = () => {
   return (
     <footer className="w-full bg-white/95 backdrop-blur-sm border-t border-gray-200 px-4 py-8 md:px-6 mt-16">
@@ -26,6 +28,37 @@ export const Footer = () => {
                 {paw}
               </span>
             ))}
+          </div>
+
+          {/* Social Media Links */}
+          <div className="flex justify-center items-center gap-6 mt-8">
+            <a 
+              href="https://wa.me/919030846847" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:scale-110 transition-transform duration-300"
+              aria-label="Message us on WhatsApp"
+            >
+              <MessageCircle size={32} />
+            </a>
+            <a 
+              href="https://www.instagram.com/furryhub.in?igsh=MWM1cXp2OWltdXRzeg==" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:scale-110 transition-transform duration-300"
+              aria-label="Follow us on Instagram"
+            >
+              <Instagram size={32} />
+            </a>
+            <a 
+              href="https://www.facebook.com/share/1CnhZWyUTx/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-white hover:scale-110 transition-transform duration-300"
+              aria-label="Follow us on Facebook"
+            >
+              <Facebook size={32} />
+            </a>
           </div>
         </div>
       </div>
